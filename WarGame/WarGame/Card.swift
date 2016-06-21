@@ -28,7 +28,7 @@ class Card
     let suit: String
     let rank: String
     let cardLabel: String
-    let cardValue: UInt
+    let cardValue: Int
     
     var description: String
     {
@@ -51,7 +51,7 @@ class Card
         }
         else
         {
-            self.cardValue = UInt(rank)!
+            self.cardValue = Int(rank)!
         }
     }
 }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3D71A3981D19C0D300E158D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A3971D19C0D300E158D0 /* AppDelegate.swift */; };
-		3D71A39A1D19C0D300E158D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A3991D19C0D300E158D0 /* ViewController.swift */; };
 		3D71A39D1D19C0D300E158D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D71A39B1D19C0D300E158D0 /* Main.storyboard */; };
 		3D71A39F1D19C0D300E158D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D71A39E1D19C0D300E158D0 /* Assets.xcassets */; };
 		3D71A3A21D19C0D300E158D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D71A3A01D19C0D300E158D0 /* LaunchScreen.storyboard */; };
@@ -19,6 +18,7 @@
 		3D71A3CA1D19C1D300E158D0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A3C91D19C1D300E158D0 /* Player.swift */; };
 		3D71A3CC1D19C5B000E158D0 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A3CB1D19C5B000E158D0 /* House.swift */; };
 		3D71A3CE1D19CB9900E158D0 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A3CD1D19CB9900E158D0 /* Dealer.swift */; };
+		3D71A3D01D19D37C00E158D0 /* WarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A3CF1D19D37C00E158D0 /* WarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,6 @@
 /* Begin PBXFileReference section */
 		3D71A3941D19C0D300E158D0 /* WarGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D71A3971D19C0D300E158D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3D71A3991D19C0D300E158D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3D71A39C1D19C0D300E158D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D71A39E1D19C0D300E158D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D71A3A11D19C0D300E158D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		3D71A3C91D19C1D300E158D0 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3D71A3CB1D19C5B000E158D0 /* House.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		3D71A3CD1D19CB9900E158D0 /* Dealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
+		3D71A3CF1D19D37C00E158D0 /* WarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				3D71A3971D19C0D300E158D0 /* AppDelegate.swift */,
-				3D71A3991D19C0D300E158D0 /* ViewController.swift */,
+				3D71A3CF1D19D37C00E158D0 /* WarViewController.swift */,
 				3D71A39B1D19C0D300E158D0 /* Main.storyboard */,
 				3D71A3C51D19C0EB00E158D0 /* Card.swift */,
 				3D71A3C71D19C15700E158D0 /* Deck.swift */,
@@ -272,11 +272,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D71A3C81D19C15700E158D0 /* Deck.swift in Sources */,
-				3D71A39A1D19C0D300E158D0 /* ViewController.swift in Sources */,
 				3D71A3CE1D19CB9900E158D0 /* Dealer.swift in Sources */,
 				3D71A3C61D19C0EB00E158D0 /* Card.swift in Sources */,
 				3D71A3CA1D19C1D300E158D0 /* Player.swift in Sources */,
 				3D71A3CC1D19C5B000E158D0 /* House.swift in Sources */,
+				3D71A3D01D19D37C00E158D0 /* WarViewController.swift in Sources */,
 				3D71A3981D19C0D300E158D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
