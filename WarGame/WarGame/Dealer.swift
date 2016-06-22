@@ -8,7 +8,7 @@
 
 import Foundation
 
-let half_the_deck = 26
+let deck_size = 52
 
 class Dealer
 {
@@ -31,11 +31,18 @@ class Dealer
         
         self.deck.shuffle()
         
-        for _ in 0..<half_the_deck
+        for i in 0..<deck_size
         {
-            self.player.cardsInDeck.append(self.deck.drawCard())
-            self.house.cardsInDeck.append(self.deck.drawCard())
+            if i % 2 == 0
+            {
+                self.player.cardsInDeck.append(self.deck.drawCard())
+            }
+            else
+            {
+                self.house.cardsInDeck.append(self.deck.drawCard())
+            }
         }
+        print("cards dealt out: \(self.player.cardsInDeck.count)")
     }
     
     func round()
@@ -80,7 +87,7 @@ class Dealer
             self.player.cardsInDeck.appendContentsOf(self.cardsInPlay)
         case "war":
             message = "It's a war!"
-            //run war method
+        //run war method
         default:
             print("slipped through the cracks")
         }
