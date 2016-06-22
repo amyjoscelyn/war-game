@@ -18,11 +18,11 @@ class House: Player
         {
             let randomNumber = Int(arc4random_uniform(numberOfCardsInHand))
             
-            self.cardInPlay = self.cardsInHand[randomNumber]
+            self.cardInPlay = self.cardsInHand.removeAtIndex(randomNumber)
         }
         else
         {
-            self.cardInPlay = self.cardsInHand[0]
+            self.cardInPlay = self.cardsInHand.removeAtIndex(0)
         }
         //later this can become more of a strategy thing
         //if i do decide to keep track of the player's last moves to decide on a strategy, then those need to become properties on the player

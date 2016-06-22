@@ -77,6 +77,8 @@ class Dealer
     {
         var message = ""
         
+        print("house deck: \(self.house.cardsInDeck.count) \n house hand: \(self.house.cardsInHand.count) \n player deck: \(self.player.cardsInDeck.count) \n player hand: \(self.player.cardsInHand.count) \n ________________ \n total: \(self.house.cardsInDeck.count + self.house.cardsInHand.count + self.player.cardsInDeck.count + self.player.cardsInHand.count)")
+        
         message = self.winner()
         
         switch message
@@ -93,6 +95,8 @@ class Dealer
         default:
             print("slipped through the cracks")
         }
+        
+        print("house deck: \(self.house.cardsInDeck.count) \n house hand: \(self.house.cardsInHand.count) \n player deck: \(self.player.cardsInDeck.count) \n player hand: \(self.player.cardsInHand.count) \n ________________ \n total: \(self.house.cardsInDeck.count + self.house.cardsInHand.count + self.player.cardsInDeck.count + self.player.cardsInHand.count)")
         
         return message
     }

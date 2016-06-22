@@ -23,21 +23,20 @@ class Player
         self.name = name
     }
     
-    //this should be called when cardsInHand.count == 0
     func drawCardsToHand()
     {
         if self.cardsInDeck.count >= cards_allowed_in_hand
         {
             for i in 0..<cards_allowed_in_hand
             {
-                self.cardsInHand.append(self.cardsInDeck[i])
+                self.cardsInHand.append(self.cardsInDeck.removeAtIndex(i))
             }
         }
         else
         {
-            for card in self.cardsInDeck
+            for i in 0..<self.cardsInDeck.count
             {
-                self.cardsInHand.append(card)
+                self.cardsInHand.append(self.cardsInDeck.removeAtIndex(i))
             }
         }
         //does this cover what happens if there are no cards left?  i feel like that condition should be satisfied elsewhere, in a gameIsOver kind of way

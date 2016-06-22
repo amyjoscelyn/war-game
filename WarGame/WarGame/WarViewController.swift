@@ -61,8 +61,6 @@ class WarViewController: UIViewController
     
     @IBAction func playContinueButtonTapped(sender: UIButton)
     {
-        //this is what should kick off the game, if it says "Let's play!"
-        //if it says "Continue", it should just clear the board of cards in play so that the next card can be played
         if let title = sender.titleLabel
         {
             if title.text == "Let's Play!"
@@ -71,9 +69,6 @@ class WarViewController: UIViewController
             }
             else if title.text == "Continue"
             {
-                
-                //two cards are playing each other
-                //this is where we need to award the winner
                 //cards in play go to winner
                 //or we go to a war
                 //then we clear the card labels
@@ -92,6 +87,9 @@ class WarViewController: UIViewController
         
         self.houseDeckLabel.hidden = false
         self.playerDeckLabel.hidden = false
+        
+        self.playContinueButton.setTitle("Continue", forState: UIControlState.Normal)
+        self.playContinueButton.titleLabel?.enabled = false
     }
     
     func deckTapped()
@@ -112,7 +110,6 @@ class WarViewController: UIViewController
             self.playerCard1Label.hidden = false
             self.playerCard2Label.hidden = false
             self.playerCard3Label.hidden = false
-            self.playContinueButton.titleLabel?.hidden = true
         }
     }
     
@@ -144,6 +141,8 @@ class WarViewController: UIViewController
     
     func setCardToPlay(label: String)
     {
+        print("house deck: \(self.dealer.house.cardsInDeck.count) \n house hand: \(self.dealer.house.cardsInHand.count) \n player deck: \(self.dealer.player.cardsInDeck.count) \n player hand: \(self.dealer.player.cardsInHand.count) \n ________________ \n total: \(self.dealer.house.cardsInDeck.count + self.dealer.house.cardsInHand.count + self.dealer.player.cardsInDeck.count + self.dealer.player.cardsInHand.count)")
+        
         for i in 0..<self.dealer.player.cardsInHand.count
         {
             let card = self.dealer.player.cardsInHand[i]
@@ -152,6 +151,8 @@ class WarViewController: UIViewController
             {
                 self.playerCard2Label.text = ""
                 self.playerCard2Label.hidden = true
+                //this is just playerCard2Label!!!
+                //NOT GOOD.
                 
                 self.turn(self.dealer.player.cardsInHand.removeAtIndex(i))
                 
@@ -177,8 +178,7 @@ class WarViewController: UIViewController
         self.playerCard2Label.userInteractionEnabled = false
         self.playerCard3Label.userInteractionEnabled = false
         
-        self.playContinueButton.titleLabel?.text = "Continue"
-        self.playContinueButton.titleLabel?.hidden = false
+        self.playContinueButton.titleLabel?.enabled = true
         
         let message = self.dealer.award()
         self.winnerLabel.text = message
