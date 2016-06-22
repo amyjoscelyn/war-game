@@ -71,6 +71,7 @@ class WarViewController: UIViewController
             }
             else if title.text == "Continue"
             {
+                
                 //two cards are playing each other
                 //this is where we need to award the winner
                 //cards in play go to winner
@@ -111,6 +112,7 @@ class WarViewController: UIViewController
             self.playerCard1Label.hidden = false
             self.playerCard2Label.hidden = false
             self.playerCard3Label.hidden = false
+            self.playContinueButton.titleLabel?.hidden = true
         }
     }
     
@@ -148,11 +150,11 @@ class WarViewController: UIViewController
             
             if card.cardLabel == label
             {
-                self.turn(self.dealer.player.cardsInHand.removeAtIndex(i))
-                
                 self.playerCard2Label.text = ""
                 self.playerCard2Label.hidden = true
-                //maybe the above should go before the method call?
+                
+                self.turn(self.dealer.player.cardsInHand.removeAtIndex(i))
+                
                 break
             }
         }
@@ -160,6 +162,7 @@ class WarViewController: UIViewController
     
     func turn(card: Card)
     {
+        self.dealer.player.cardInPlay = card
         self.playerCardInPlayLabel.text = card.cardLabel
         self.playerCardInPlayLabel.hidden = false
         
@@ -175,11 +178,17 @@ class WarViewController: UIViewController
         self.playerCard3Label.userInteractionEnabled = false
         
         self.playContinueButton.titleLabel?.text = "Continue"
+        self.playContinueButton.titleLabel?.hidden = false
+        
+        let message = self.dealer.award()
+        self.winnerLabel.text = message
+        self.winnerLabel.hidden = false
         
         if self.dealer.house.cardsInHand.count == 0 && self.dealer.player.cardsInHand.count != 0
         {
             self.dealer.round()
             //You know, it would be kind of cool to see the computer's cardsInHand as well, and to see which it chooses each turn
+            //maybe it can go right at the top, and the winner bar can be translucent over it when it pops up, since those cards aren't interactive anyway
         }
     }
 }

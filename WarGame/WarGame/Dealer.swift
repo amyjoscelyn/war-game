@@ -77,6 +77,8 @@ class Dealer
     {
         var message = ""
         
+        message = self.winner()
+        
         switch message
         {
         case "house":
@@ -105,10 +107,12 @@ class Dealer
             houseCardValue = houseCard.cardValue
         }
         var playerCardValue = 0
-        if let playerCard = self.house.cardInPlay
+        if let playerCard = self.player.cardInPlay
         {
             playerCardValue = playerCard.cardValue
         }
+        
+        print("house has \(houseCardValue), player has \(playerCardValue)")
         
         if houseCardValue > playerCardValue
         {

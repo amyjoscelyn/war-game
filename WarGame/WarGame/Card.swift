@@ -41,13 +41,21 @@ class Card
         self.rank = rank
         self.cardLabel = "\(suit)\(rank)"
         
-        if rank == "J" || rank == "Q" || rank == "K"
+        if rank == "J"
         {
-            self.cardValue = 10
+            self.cardValue = 11
+        }
+        else if rank == "Q"
+        {
+            self.cardValue = 12
+        }
+        else if rank == "K"
+        {
+            self.cardValue = 13
         }
         else if rank == "A"
         {
-            self.cardValue = 1
+            self.cardValue = 14
         }
         else
         {
