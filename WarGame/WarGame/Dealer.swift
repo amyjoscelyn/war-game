@@ -66,11 +66,6 @@ class Dealer
         {
             self.cardsInPlay.append(houseCard)
         }
-        
-        //the turn is simultaneous
-        //house chooses the card from their hand to play
-        //player is prompted to choose the card from their hand.  so this should be called when the player chooses their card.  its insertion onto the board should happen at the same time the house chooses their card and it gets inserted
-        //card in play must be added to dealer's cardsInPlay
     }
     
     func award() -> String

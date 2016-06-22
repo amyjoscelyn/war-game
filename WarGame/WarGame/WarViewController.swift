@@ -69,11 +69,8 @@ class WarViewController: UIViewController
             }
             else if title.text == "Continue"
             {
-                //cards in play go to winner
-                //or we go to a war
-                //then we clear the card labels
+                self.prepForNextTurn()
                 //I would kind of love to just make this a generic tap gesture on the view, so tap anywhere to continue
-                //start fresh so we can go again
             }
         }
     }
@@ -89,7 +86,24 @@ class WarViewController: UIViewController
         self.playerDeckLabel.hidden = false
         
         self.playContinueButton.setTitle("Continue", forState: UIControlState.Normal)
-        self.playContinueButton.titleLabel?.enabled = false
+        self.playContinueButton.enabled = false
+    }
+    
+    func prepForNextTurn()
+    {
+        self.houseCardInPlayLabel.text = ""
+        self.houseCardInPlayLabel.hidden = true
+        
+        self.playerCardInPlayLabel.text = ""
+        self.playerCardInPlayLabel.hidden = true
+        
+        self.dealer.cardsInPlay.removeAll()
+        
+        self.playContinueButton.enabled = false
+        
+        self.playerCard1Label.userInteractionEnabled = true
+        self.playerCard2Label.userInteractionEnabled = true
+        self.playerCard3Label.userInteractionEnabled = true
     }
     
     func deckTapped()
@@ -115,48 +129,48 @@ class WarViewController: UIViewController
     
     func card1Tapped()
     {
-        if let card1Label = self.playerCard1Label.text
-        {
-            self.setCardToPlay(card1Label)
-        }
+        //        if let card1Label = self.playerCard1Label.text
+        //        {
+        self.setCardToPlay(self.playerCard1Label)
+        //        }
     }
     
     func card2Tapped()
     {
-        if let card2Label = self.playerCard2Label.text
-        {
-            self.setCardToPlay(card2Label)
-        }
+        //        if let card2Label = self.playerCard2Label.text
+        //        {
+        self.setCardToPlay(self.playerCard2Label)
+        //        }
     }
     
     func card3Tapped()
     {
         //would I be able to get all three of these methods combined to one?
         
-        if let card3Label = self.playerCard3Label.text
-        {
-            self.setCardToPlay(card3Label)
-        }
+        //        if let card3Label = self.playerCard3Label.text
+        //        {
+        self.setCardToPlay(self.playerCard3Label)
+        //        }
     }
     
-    func setCardToPlay(label: String)
+    func setCardToPlay(label: UILabel)
     {
         print("house deck: \(self.dealer.house.cardsInDeck.count) \n house hand: \(self.dealer.house.cardsInHand.count) \n player deck: \(self.dealer.player.cardsInDeck.count) \n player hand: \(self.dealer.player.cardsInHand.count) \n ________________ \n total: \(self.dealer.house.cardsInDeck.count + self.dealer.house.cardsInHand.count + self.dealer.player.cardsInDeck.count + self.dealer.player.cardsInHand.count)")
         
         for i in 0..<self.dealer.player.cardsInHand.count
         {
             let card = self.dealer.player.cardsInHand[i]
-            
-            if card.cardLabel == label
+            if let cardLabel = label.text
             {
-                self.playerCard2Label.text = ""
-                self.playerCard2Label.hidden = true
-                //this is just playerCard2Label!!!
-                //NOT GOOD.
-                
-                self.turn(self.dealer.player.cardsInHand.removeAtIndex(i))
-                
-                break
+                if card.cardLabel == cardLabel
+                {
+                    label.text = ""
+                    label.hidden = true
+                    
+                    self.turn(self.dealer.player.cardsInHand.removeAtIndex(i))
+                    
+                    break
+                }
             }
         }
     }
@@ -174,11 +188,11 @@ class WarViewController: UIViewController
         self.houseCardInPlayLabel.text = self.dealer.house.cardInPlay?.cardLabel
         self.houseCardInPlayLabel.hidden = false
         
-        self.playerCard1Label.userInteractionEnabled = false
-        self.playerCard2Label.userInteractionEnabled = false
-        self.playerCard3Label.userInteractionEnabled = false
+        //        self.playerCard1Label.userInteractionEnabled = false
+        //        self.playerCard2Label.userInteractionEnabled = false
+        //        self.playerCard3Label.userInteractionEnabled = false
         
-        self.playContinueButton.titleLabel?.enabled = true
+        self.playContinueButton.enabled = true
         
         let message = self.dealer.award()
         self.winnerLabel.text = message
