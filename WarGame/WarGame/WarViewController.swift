@@ -24,6 +24,14 @@ class WarViewController: UIViewController
     @IBOutlet weak var playerCard2Label: UILabel!
     @IBOutlet weak var playerCard3Label: UILabel!
     
+    @IBOutlet weak var houseWarCard1Label: UILabel!
+    @IBOutlet weak var houseWarCard2Label: UILabel!
+    @IBOutlet weak var houseWarCard3Label: UILabel!
+    
+    @IBOutlet weak var playerWarCard1Label: UILabel!
+    @IBOutlet weak var playerWarCard2Label: UILabel!
+    @IBOutlet weak var playerWarCard3Label: UILabel!
+    
     @IBOutlet weak var playContinueButton: UIButton!
     
     let dealer: Dealer = Dealer.init()
@@ -69,7 +77,14 @@ class WarViewController: UIViewController
             }
             else if title.text == "Continue"
             {
-                self.prepForNextTurn()
+                if self.winnerLabel.text == "It's a war!"
+                {
+                    self.war()
+                }
+                else
+                {
+                    self.prepForNextTurn()
+                }
                 //I would kind of love to just make this a generic tap gesture on the view, so tap anywhere to continue
             }
         }
@@ -188,9 +203,9 @@ class WarViewController: UIViewController
         self.houseCardInPlayLabel.text = self.dealer.house.cardInPlay?.cardLabel
         self.houseCardInPlayLabel.hidden = false
         
-        //        self.playerCard1Label.userInteractionEnabled = false
-        //        self.playerCard2Label.userInteractionEnabled = false
-        //        self.playerCard3Label.userInteractionEnabled = false
+        self.playerCard1Label.userInteractionEnabled = false
+        self.playerCard2Label.userInteractionEnabled = false
+        self.playerCard3Label.userInteractionEnabled = false
         
         self.playContinueButton.enabled = true
         
@@ -205,4 +220,50 @@ class WarViewController: UIViewController
             //maybe it can go right at the top, and the winner bar can be translucent over it when it pops up, since those cards aren't interactive anyway
         }
     }
+    
+    func war()
+    {
+        self.playContinueButton.enabled = false
+        self.dealer.war()
+        
+        switch self.dealer.house.cardsForWar.count
+        {
+        case 2:
+            //set first two labels plus unhide them
+            self.houseWarCard1Label.text = self.dealer.house.cardsForWar[0].cardLabel
+            self.houseWarCard2Label.text = self.dealer.house.cardsForWar[1].cardLabel
+            
+            self.houseWarCard1Label.hidden = false
+            self.houseWarCard2Label.hidden = false
+        case 1:
+            self.houseWarCard1Label.text = self.dealer.house.cardsForWar[0].cardLabel
+            
+            self.houseWarCard1Label.hidden = false
+            //don't forget case 0!!!!
+        default:
+            self.houseWarCard1Label.text = self.dealer.house.cardsForWar[0].cardLabel
+            self.houseWarCard2Label.text = self.dealer.house.cardsForWar[1].cardLabel
+            self.houseWarCard3Label.text = self.dealer.house.cardsForWar[2].cardLabel
+            
+            self.houseWarCard1Label.hidden = false
+            self.houseWarCard2Label.hidden = false
+            self.houseWarCard3Label.hidden = false
+        }
+        //we have a war!
+        //this means i have up to 8 cards on deck--3 each or so for the facedown
+        //one for the card to play
+        //this method should populate the new label views with the card values/cardbacks
+        //then it should call award() again on them
+    }
+    //once award() has been called again, it goes through the motions.  when it's been awarded, we should check to see if there's a war that's in play (a calculated property called isWar:Bool, or one we set ourselves here)
+    //somehow the Continue button should know to change the Message to "Reveal cards!" to turn the facedown cards right side up so you know what you've lost/won
+    //then the continue button should go like normal and clear the field
+    //if there's been another war, the same thing happens again, but there has to be a layer of cards underneath that gets revealed after the top layer has been, and so on.
+    //i can figure that out later though
+    
+    /*
+     Okay.  So the game mostly works.  It doesn't handle wars at all, and it freaked out near the endgame--I can't remember properly, but I think I tapped on the deck for player as usual to draw the hand and it crashed.  Index out of range, it said.
+     
+     I should deal with wars, though.  And then worry about winning/finishing the game.
+     */
 }

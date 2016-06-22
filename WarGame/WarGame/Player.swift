@@ -15,6 +15,7 @@ class Player
     let name: String
     var cardsInDeck: [Card] = []
     var cardsInHand: [Card] = []
+    var cardsForWar: [Card] = []
     var cardInPlay: Card? //not sure if this should be optional or not... but there are times where there's no card in play, so that would be like nil, right?
     //I might want a description of the player... mostly this would keep track of how many cards left in the hand
     

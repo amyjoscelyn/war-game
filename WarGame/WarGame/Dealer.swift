@@ -9,6 +9,8 @@
 import Foundation
 
 let deck_size = 52
+let cards_for_war = 3 //according to Bicycle, this should only be 1!
+let card_for_play = 1
 
 class Dealer
 {
@@ -79,14 +81,14 @@ class Dealer
         switch message
         {
         case "house":
-            message = "House takes the hand!"
+            message = "House wins!"
             self.house.cardsInDeck.appendContentsOf(self.cardsInPlay)
         case "player":
-            message = "Player takes the hand!"
+            message = "Player wins!"
             self.player.cardsInDeck.appendContentsOf(self.cardsInPlay)
         case "war":
             message = "It's a war!"
-        //run war method
+//            self.war()
         default:
             print("slipped through the cracks")
         }
@@ -99,8 +101,8 @@ class Dealer
     func winner() -> String
     {
         var winner = ""
-        //returns either "house", "player", or "war"
         var houseCardValue = 0
+        
         if let houseCard = self.house.cardInPlay
         {
             houseCardValue = houseCard.cardValue
@@ -127,5 +129,71 @@ class Dealer
             //i think.  this is assuming the card in play is never null at this point
         }
         return winner
+    }
+    
+    func war()
+    {
+        //then a fourth card is played on top, and it determines the war
+        //and this fourth is award()ed again
+        if self.house.cardsInDeck.count >= cards_for_war + card_for_play
+        {
+            for i in 0..<cards_for_war
+            {
+                self.house.cardsForWar.append(self.house.cardsInDeck.removeAtIndex(i))
+            }
+            self.player.cardInPlay = self.player.cardsInDeck[0]
+        }
+        else if self.house.cardsInDeck.count > card_for_play
+        {
+            for i in 0..<self.house.cardsInDeck.count - card_for_play
+            {
+                self.house.cardsForWar.append(self.house.cardsInDeck.removeAtIndex(i))
+            }
+            self.player.cardInPlay = self.player.cardsInDeck[0]
+        }
+        else if self.house.cardsInDeck.count == card_for_play
+        {
+            self.house.cardInPlay = self.house.cardsInDeck[0]
+        }
+        else
+        {
+            //player automatically must win, because the house has run out of cards!
+        }
+        
+        if self.player.cardsInDeck.count >= cards_for_war + card_for_play
+        {
+            for i in 0..<cards_for_war
+            {
+                self.player.cardsForWar.append(self.player.cardsInDeck.removeAtIndex(i))
+            }
+            self.player.cardInPlay = self.player.cardsInDeck[0]
+        }
+        else if self.player.cardsInDeck.count > card_for_play
+        {
+            for i in 0..<self.player.cardsInDeck.count - card_for_play
+            {
+                self.player.cardsForWar.append(self.player.cardsInDeck.removeAtIndex(i))
+            }
+            self.player.cardInPlay = self.player.cardsInDeck[0]
+        }
+        else if self.player.cardsInDeck.count == card_for_play
+        {
+            self.player.cardInPlay = self.player.cardsInDeck[0]
+        }
+        else
+        {
+            //house automatically must win, because you've run out of cards!
+        }
+        self.cardsInPlay.appendContentsOf(self.house.cardsForWar)
+        self.cardsInPlay.appendContentsOf(self.player.cardsForWar)
+        
+        if let houseCard = self.house.cardInPlay
+        {
+            self.cardsInPlay.append(houseCard)
+        }
+        if let playerCard = self.player.cardInPlay
+        {
+            self.cardsInPlay.append(playerCard)
+        }
     }
 }
