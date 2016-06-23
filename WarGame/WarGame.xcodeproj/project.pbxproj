@@ -19,6 +19,8 @@
 		3D71A3CC1D19C5B000E158D0 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A3CB1D19C5B000E158D0 /* House.swift */; };
 		3D71A3CE1D19CB9900E158D0 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A3CD1D19CB9900E158D0 /* Dealer.swift */; };
 		3D71A3D01D19D37C00E158D0 /* WarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A3CF1D19D37C00E158D0 /* WarViewController.swift */; };
+		3D947F251D1C32C1009801AE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D947F241D1C32C1009801AE /* CardView.swift */; };
+		3D947F291D1C3A71009801AE /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F281D1C3A71009801AE /* CardView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		3D71A3CB1D19C5B000E158D0 /* House.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		3D71A3CD1D19CB9900E158D0 /* Dealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
 		3D71A3CF1D19D37C00E158D0 /* WarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarViewController.swift; sourceTree = "<group>"; };
+		3D947F241D1C32C1009801AE /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		3D947F281D1C3A71009801AE /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +113,9 @@
 			children = (
 				3D71A3971D19C0D300E158D0 /* AppDelegate.swift */,
 				3D71A3CF1D19D37C00E158D0 /* WarViewController.swift */,
+				3D947F241D1C32C1009801AE /* CardView.swift */,
 				3D71A39B1D19C0D300E158D0 /* Main.storyboard */,
+				3D947F281D1C3A71009801AE /* CardView.xib */,
 				3D71A3C51D19C0EB00E158D0 /* Card.swift */,
 				3D71A3C71D19C15700E158D0 /* Deck.swift */,
 				3D71A3C91D19C1D300E158D0 /* Player.swift */,
@@ -246,6 +252,7 @@
 			files = (
 				3D71A3A21D19C0D300E158D0 /* LaunchScreen.storyboard in Resources */,
 				3D71A39F1D19C0D300E158D0 /* Assets.xcassets in Resources */,
+				3D947F291D1C3A71009801AE /* CardView.xib in Resources */,
 				3D71A39D1D19C0D300E158D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +284,7 @@
 				3D71A3CA1D19C1D300E158D0 /* Player.swift in Sources */,
 				3D71A3CC1D19C5B000E158D0 /* House.swift in Sources */,
 				3D71A3D01D19D37C00E158D0 /* WarViewController.swift in Sources */,
+				3D947F251D1C32C1009801AE /* CardView.swift in Sources */,
 				3D71A3981D19C0D300E158D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +510,7 @@
 				3D71A3BE1D19C0D300E158D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D71A3BF1D19C0D300E158D0 /* Build configuration list for PBXNativeTarget "WarGameTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +519,7 @@
 				3D71A3C11D19C0D300E158D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D71A3C21D19C0D300E158D0 /* Build configuration list for PBXNativeTarget "WarGameUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +528,7 @@
 				3D71A3C41D19C0D300E158D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

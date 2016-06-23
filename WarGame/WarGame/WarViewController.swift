@@ -34,7 +34,12 @@ class WarViewController: UIViewController
     
     @IBOutlet weak var playContinueButton: UIButton!
     
+    
+    @IBOutlet weak var cardView: CardView!
+    
+    
     let dealer: Dealer = Dealer.init()
+    var cardViewXib: CardView!
     
     override func viewDidLoad()
     {
@@ -48,6 +53,8 @@ class WarViewController: UIViewController
         self.playerCard1Label.hidden = true
         self.playerCard2Label.hidden = true
         self.playerCard3Label.hidden = true
+        
+//        self.view.addSubview(cardViewXib)
         
         self.tapGestures()
     }

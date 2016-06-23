@@ -155,11 +155,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mR3-CV-jXm" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="252" y="593" width="60" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="cardView" destination="mR3-CV-jXm" id="izo-M6-DXj"/>
                         <outlet property="houseCardInPlayLabel" destination="B4T-bo-8V6" id="pQA-xn-nOg"/>
                         <outlet property="houseDeckLabel" destination="gpf-h2-IAA" id="coU-7N-Edj"/>
                         <outlet property="houseWarCard1Label" destination="pIb-VZ-h1V" id="HXr-qM-dXc"/>
