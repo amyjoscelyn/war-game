@@ -16,28 +16,25 @@ class WarViewController: UIViewController
     
     @IBOutlet weak var houseDeckLabel: UILabel!
     @IBOutlet weak var houseCardInPlayLabel: UILabel!
-    @IBOutlet weak var playerCardInPlayLabel: UILabel!
+    @IBOutlet weak var playerCardInPlayView: CardView!
     @IBOutlet weak var playerDeckLabel: UILabel!
     
-    //    @IBOutlet weak var playerCard1Label: UILabel!
-    //    @IBOutlet weak var playerCard2Label: UILabel!
-    //    @IBOutlet weak var playerCard3Label: UILabel!
     @IBOutlet weak var playerCard1View: CardView!
     @IBOutlet weak var playerCard2View: CardView!
     @IBOutlet weak var playerCard3View: CardView!
     
-    @IBOutlet weak var houseWarCard1Label: UILabel!
-    @IBOutlet weak var houseWarCard2Label: UILabel!
-    @IBOutlet weak var houseWarCard3Label: UILabel!
+    @IBOutlet weak var houseWarCard1View: CardView!
+    @IBOutlet weak var houseWarCard2View: CardView!
+    @IBOutlet weak var houseWarCard3View: CardView!
     
-    @IBOutlet weak var playerWarCard1Label: UILabel!
-    @IBOutlet weak var playerWarCard2Label: UILabel!
-    @IBOutlet weak var playerWarCard3Label: UILabel!
+    @IBOutlet weak var playerWarCard1View: CardView!
+    @IBOutlet weak var playerWarCard2View: CardView!
+    @IBOutlet weak var playerWarCard3View: CardView!
     
     @IBOutlet weak var playContinueButton: UIButton!
     
     
-    @IBOutlet weak var cardView: CardView!
+    //    @IBOutlet weak var cardView: CardView!
     
     
     let dealer: Dealer = Dealer.init()
@@ -51,12 +48,19 @@ class WarViewController: UIViewController
         self.houseDeckLabel.hidden = true
         self.playerDeckLabel.hidden = true
         self.houseCardInPlayLabel.hidden = true
-        self.playerCardInPlayLabel.hidden = true
-
-        //I still need these...
+        
+        self.houseWarCard1View.hidden = true
+        self.houseWarCard2View.hidden = true
+        self.houseWarCard3View.hidden = true
+        
+        //Do I still need these...?
         self.playerCard1View.hidden = true
         self.playerCard2View.hidden = true
         self.playerCard3View.hidden = true
+        self.playerCardInPlayView.hidden = true
+        self.playerWarCard1View.hidden = true
+        self.playerWarCard2View.hidden = true
+        self.playerWarCard3View.hidden = true
         
         self.tapGestures()
     }
@@ -78,6 +82,7 @@ class WarViewController: UIViewController
     
     @IBAction func playContinueButtonTapped(sender: UIButton)
     {
+        //I would kind of love to just make this a generic tap gesture on the view, so tap anywhere to continue
         if let title = sender.titleLabel
         {
             if title.text == "Let's Play!"
@@ -94,7 +99,14 @@ class WarViewController: UIViewController
                 {
                     self.prepForNextTurn()
                 }
-                //I would kind of love to just make this a generic tap gesture on the view, so tap anywhere to continue
+            }
+            else if title.text == "Resolve War"
+            {
+                self.resolveWar()
+            }
+            else if title.text == "Reveal Cards"
+            {
+                self.revealCards()
             }
         }
     }
@@ -117,9 +129,22 @@ class WarViewController: UIViewController
     {
         self.houseCardInPlayLabel.text = ""
         self.houseCardInPlayLabel.hidden = true
+        self.winnerLabel.hidden = true
         
-        self.playerCardInPlayLabel.text = ""
-        self.playerCardInPlayLabel.hidden = true
+        self.playerCardInPlayView.card = nil
+        //        self.playerCardInPlayLabel.hidden = true
+        
+        //*********************************
+        // set all of the war cards as nil
+        //*********************************
+        
+        self.houseWarCard1View.card = nil
+        self.houseWarCard2View.card = nil
+        self.houseWarCard3View.card = nil
+        
+        self.playerWarCard1View.card = nil
+        self.playerWarCard2View.card = nil
+        self.playerWarCard3View.card = nil
         
         self.dealer.cardsInPlay.removeAll()
         
@@ -169,8 +194,6 @@ class WarViewController: UIViewController
     
     func determineCardToPlay(cardView: CardView)
     {
-        //now that these implementations are so simple and the cardView carries it's own card, can I push all of the cardViews in hand into the same gesture recognizer?
-        
         if let card = cardView.card
         {
             self.turn(card)
@@ -180,8 +203,7 @@ class WarViewController: UIViewController
     func turn(card: Card)
     {
         self.dealer.player.cardInPlay = card
-        self.playerCardInPlayLabel.text = card.cardLabel //make this view, just pass it the card.
-        self.playerCardInPlayLabel.hidden = false
+        self.playerCardInPlayView.card = card
         
         self.dealer.cardsInPlay.append(card)
         
@@ -211,49 +233,96 @@ class WarViewController: UIViewController
     
     func war()
     {
+        //first phase
+        //handler
         self.playContinueButton.enabled = false
         self.dealer.war()
-        
+        self.placeCardsFacedown()
+    }
+    
+    func placeCardsFacedown()
+    {
+        self.winnerLabel.hidden = true
+        //second phase
         switch self.dealer.house.cardsForWar.count
         {
         case 2:
-            //set first two labels plus unhide them
-            self.houseWarCard1Label.text = self.dealer.house.cardsForWar[0].cardLabel
-            self.houseWarCard2Label.text = self.dealer.house.cardsForWar[1].cardLabel
-            
-            self.houseWarCard1Label.hidden = false
-            self.houseWarCard2Label.hidden = false
+            self.houseWarCard1View.card = self.dealer.house.cardsForWar[0]
+            self.houseWarCard2View.card = self.dealer.house.cardsForWar[1]
         case 1:
-            self.houseWarCard1Label.text = self.dealer.house.cardsForWar[0].cardLabel
-            
-            self.houseWarCard1Label.hidden = false
+            self.houseWarCard1View.card = self.dealer.house.cardsForWar[0]
         //don't forget case 0!!!!
         default:
-            self.houseWarCard1Label.text = self.dealer.house.cardsForWar[0].cardLabel
-            self.houseWarCard2Label.text = self.dealer.house.cardsForWar[1].cardLabel
-            self.houseWarCard3Label.text = self.dealer.house.cardsForWar[2].cardLabel
+            self.houseWarCard1View.card = self.dealer.house.cardsForWar[0]
+            self.houseWarCard2View.card = self.dealer.house.cardsForWar[1]
+            self.houseWarCard3View.card = self.dealer.house.cardsForWar[2]
             
-            self.houseWarCard1Label.hidden = false
-            self.houseWarCard2Label.hidden = false
-            self.houseWarCard3Label.hidden = false
+            self.houseWarCard1View.faceUp = false
+            self.houseWarCard2View.faceUp = false
+            self.houseWarCard3View.faceUp = false
         }
-        //we have a war!
-        //this means i have up to 8 cards on deck--3 each or so for the facedown
-        //one for the card to play
-        //this method should populate the new label views with the card values/cardbacks
-        //then it should call award() again on them
+        
+        switch self.dealer.player.cardsForWar.count
+        {
+        case 2:
+            //set first two labels plus unhide them
+            self.playerWarCard1View.card = self.dealer.player.cardsForWar[0]
+            self.playerWarCard2View.card = self.dealer.player.cardsForWar[1]
+        case 1:
+            self.playerWarCard1View.card = self.dealer.player.cardsForWar[0]
+        //don't forget case 0!!!!
+        default:
+            self.playerWarCard1View.card = self.dealer.player.cardsForWar[0]
+            self.playerWarCard2View.card = self.dealer.player.cardsForWar[1]
+            self.playerWarCard3View.card = self.dealer.player.cardsForWar[2]
+            
+            self.playerWarCard1View.faceUp = false
+            self.playerWarCard2View.faceUp = false
+            self.playerWarCard3View.faceUp = false
+        }
+        
+        self.playContinueButton.setTitle("Resolve War", forState: UIControlState.Normal)
+        self.playContinueButton.enabled = true
+        
+        //can I remove the cards from cardsForWar now?
+        //when are those cards added to cardsInPlay?
+        //they need to be cleared before there's a chance of another war
     }
-    //once award() has been called again, it goes through the motions.  when it's been awarded, we should check to see if there's a war that's in play (a calculated property called isWar:Bool, or one we set ourselves here)
-    //somehow the Continue button should know to change the Message to "Reveal cards!" to turn the facedown cards right side up so you know what you've lost/won
-    //then the continue button should go like normal and clear the field
+    
+    func resolveWar()
+    {
+        //third phase
+        
+        self.playerCardInPlayView.card = self.dealer.player.cardInPlay
+        self.houseCardInPlayLabel.text = self.dealer.house.cardInPlay?.cardLabel
+        
+        //        self.playContinueButton.enabled = false
+        self.playContinueButton.setTitle("Reveal Cards", forState: UIControlState.Normal)
+        
+        let message = self.dealer.award()
+        self.winnerLabel.text = message
+        self.winnerLabel.hidden = false
+    }
+    
+    func revealCards()
+    {
+        //fourth phase
+        
+        //        self.houseWarCard1Label.
+        //reveal houseCards
+        
+        self.houseWarCard1View.faceUp = true
+        self.houseWarCard2View.faceUp = true
+        self.houseWarCard3View.faceUp = true
+        
+        self.playerWarCard1View.faceUp = true
+        self.playerWarCard2View.faceUp = true
+        self.playerWarCard3View.faceUp = true
+        
+        self.playContinueButton.setTitle("Continue", forState: UIControlState.Normal)
+    }
     //if there's been another war, the same thing happens again, but there has to be a layer of cards underneath that gets revealed after the top layer has been, and so on.
     //i can figure that out later though
-    
-    /*
-     Okay.  So the game mostly works.  It doesn't handle wars at all, and it freaked out near the endgame--I can't remember properly, but I think I tapped on the deck for player as usual to draw the hand and it crashed.  Index out of range, it said.
-     
-     I should deal with wars, though.  And then worry about winning/finishing the game.
-     */
     
     //You know, it would be kind of cool to see the computer's cardsInHand as well, and to see which it chooses each turn
     //maybe it can go right at the top, and the winner bar can be translucent over it when it pops up, since those cards aren't interactive anyway

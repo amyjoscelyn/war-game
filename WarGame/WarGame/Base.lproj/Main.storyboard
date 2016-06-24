@@ -33,15 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4T-bo-8V6" userLabel="houseCardInPlay">
-                                <rect key="frame" x="177" y="175" width="60" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" label="houseCard1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsE-jh-2vw" userLabel="playerCardInPlay">
-                                <rect key="frame" x="177" y="294" width="60" height="80"/>
+                                <rect key="frame" x="177" y="208" width="60" height="80"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration" label="houseCard1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -49,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNq-3t-OSl" userLabel="playerDeck">
-                                <rect key="frame" x="334" y="353" width="60" height="80"/>
+                                <rect key="frame" x="334" y="383" width="60" height="80"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration" label="houseCard1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -77,60 +69,16 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abs-gP-blE">
-                                <rect key="frame" x="173" y="520" width="70" height="37"/>
+                                <rect key="frame" x="126" y="520" width="160" height="37"/>
                                 <state key="normal" title="Let's Play!"/>
                                 <connections>
                                     <action selector="playContinueButtonTapped:" destination="KPW-hy-UVW" eventType="touchUpInside" id="hse-Fx-iq7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIb-VZ-h1V" userLabel="houseWarCard1">
-                                <rect key="frame" x="245" y="155" width="60" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" label="houseCard1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwL-NQ-g88" userLabel="houseWarCard3">
-                                <rect key="frame" x="333" y="133" width="60" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" label="houseCard1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7d-Jr-jpV" userLabel="playerWarCard1">
-                                <rect key="frame" x="99" y="332" width="60" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" label="houseCard1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1B-2t-kwR" userLabel="playerWarCard2">
-                                <rect key="frame" x="58" y="353" width="60" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" label="houseCard1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcI-sf-rT9" userLabel="playerWarCard3">
-                                <rect key="frame" x="20" y="371" width="60" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" label="houseCard1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZq-li-fJF" userLabel="houseWarCard2">
-                                <rect key="frame" x="287" y="146" width="60" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" label="houseCard1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZq-j2-xQj" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="20" y="611" width="60" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2K-Fy-A5f" customClass="CardView" customModule="WarGame" customModuleProvider="target">
                                 <rect key="frame" x="177" y="611" width="60" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,8 +87,32 @@
                                 <rect key="frame" x="333" y="611" width="60" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZq-j2-xQj" customClass="CardView" customModule="WarGame" customModuleProvider="target">
-                                <rect key="frame" x="20" y="611" width="60" height="80"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dmf-mQ-del" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="177" y="314" width="60" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A9s-30-b22" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="97" y="340" width="60" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tL1-Ma-bqx" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="59" y="363" width="60" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IJp-Ld-tPt" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="20" y="383" width="60" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cxt-B2-6HU" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="254" y="178" width="60" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0J-tN-jRV" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="290" y="153" width="60" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fC0-sJ-Hpa" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="334" y="131" width="60" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -150,18 +122,18 @@
                     <connections>
                         <outlet property="houseCardInPlayLabel" destination="B4T-bo-8V6" id="pQA-xn-nOg"/>
                         <outlet property="houseDeckLabel" destination="gpf-h2-IAA" id="coU-7N-Edj"/>
-                        <outlet property="houseWarCard1Label" destination="pIb-VZ-h1V" id="HXr-qM-dXc"/>
-                        <outlet property="houseWarCard2Label" destination="DZq-li-fJF" id="4Vz-V7-md4"/>
-                        <outlet property="houseWarCard3Label" destination="CwL-NQ-g88" id="gvO-F6-uEW"/>
+                        <outlet property="houseWarCard1View" destination="cxt-B2-6HU" id="fqm-B7-k9G"/>
+                        <outlet property="houseWarCard2View" destination="N0J-tN-jRV" id="IKc-NT-yre"/>
+                        <outlet property="houseWarCard3View" destination="fC0-sJ-Hpa" id="q2w-WI-hWL"/>
                         <outlet property="playContinueButton" destination="abs-gP-blE" id="TAK-JT-dY4"/>
                         <outlet property="playerCard1View" destination="XZq-j2-xQj" id="ZKm-xW-V8Q"/>
                         <outlet property="playerCard2View" destination="b2K-Fy-A5f" id="lTI-un-Hmc"/>
                         <outlet property="playerCard3View" destination="nEf-gG-SZW" id="xeG-tO-A0L"/>
-                        <outlet property="playerCardInPlayLabel" destination="tsE-jh-2vw" id="Ngz-7y-m7d"/>
+                        <outlet property="playerCardInPlayView" destination="Dmf-mQ-del" id="899-Wy-KH2"/>
                         <outlet property="playerDeckLabel" destination="zNq-3t-OSl" id="ZOY-RJ-grJ"/>
-                        <outlet property="playerWarCard1Label" destination="B7d-Jr-jpV" id="HuX-sk-SgQ"/>
-                        <outlet property="playerWarCard2Label" destination="W1B-2t-kwR" id="7LV-9r-lax"/>
-                        <outlet property="playerWarCard3Label" destination="rcI-sf-rT9" id="NJ1-rU-1KN"/>
+                        <outlet property="playerWarCard1View" destination="A9s-30-b22" id="Brf-vP-mdW"/>
+                        <outlet property="playerWarCard2View" destination="tL1-Ma-bqx" id="sSV-nO-ojl"/>
+                        <outlet property="playerWarCard3View" destination="IJp-Ld-tPt" id="vHB-b8-cfd"/>
                         <outlet property="winnerLabel" destination="dQp-ZO-vQV" id="2Uj-Yr-e5S"/>
                     </connections>
                 </viewController>

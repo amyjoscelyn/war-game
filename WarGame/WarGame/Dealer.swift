@@ -141,7 +141,7 @@ class Dealer
             {
                 self.house.cardsForWar.append(self.house.cardsInDeck.removeAtIndex(i))
             }
-            self.player.cardInPlay = self.player.cardsInDeck[0]
+            self.house.cardInPlay = self.house.cardsInDeck[0]
         }
         else if self.house.cardsInDeck.count > card_for_play
         {
@@ -149,7 +149,7 @@ class Dealer
             {
                 self.house.cardsForWar.append(self.house.cardsInDeck.removeAtIndex(i))
             }
-            self.player.cardInPlay = self.player.cardsInDeck[0]
+            self.house.cardInPlay = self.house.cardsInDeck[0]
         }
         else if self.house.cardsInDeck.count == card_for_play
         {
