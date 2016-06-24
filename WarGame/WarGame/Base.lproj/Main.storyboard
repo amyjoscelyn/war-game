@@ -56,30 +56,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iE-k0-Dfn" userLabel="playerCard1">
-                                <rect key="frame" x="20" y="604" width="60" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" label="houseCard1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cA8-xs-jV9" userLabel="playerCard2">
-                                <rect key="frame" x="177" y="604" width="60" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" label="houseCard1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InH-4u-Ipt" userLabel="playerCard3">
-                                <rect key="frame" x="334" y="604" width="60" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" label="houseCard1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iup-N0-I7a" userLabel="horizontalBar">
                                 <rect key="frame" x="20" y="508" width="374" height="4"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -155,8 +131,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mR3-CV-jXm" customClass="CardView" customModule="WarGame" customModuleProvider="target">
-                                <rect key="frame" x="252" y="593" width="60" height="80"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2K-Fy-A5f" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="177" y="611" width="60" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nEf-gG-SZW" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="333" y="611" width="60" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZq-j2-xQj" customClass="CardView" customModule="WarGame" customModuleProvider="target">
+                                <rect key="frame" x="20" y="611" width="60" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -164,16 +148,15 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="cardView" destination="mR3-CV-jXm" id="izo-M6-DXj"/>
                         <outlet property="houseCardInPlayLabel" destination="B4T-bo-8V6" id="pQA-xn-nOg"/>
                         <outlet property="houseDeckLabel" destination="gpf-h2-IAA" id="coU-7N-Edj"/>
                         <outlet property="houseWarCard1Label" destination="pIb-VZ-h1V" id="HXr-qM-dXc"/>
                         <outlet property="houseWarCard2Label" destination="DZq-li-fJF" id="4Vz-V7-md4"/>
                         <outlet property="houseWarCard3Label" destination="CwL-NQ-g88" id="gvO-F6-uEW"/>
                         <outlet property="playContinueButton" destination="abs-gP-blE" id="TAK-JT-dY4"/>
-                        <outlet property="playerCard1Label" destination="3iE-k0-Dfn" id="Sfi-5X-Uqi"/>
-                        <outlet property="playerCard2Label" destination="cA8-xs-jV9" id="rcB-dj-tDc"/>
-                        <outlet property="playerCard3Label" destination="InH-4u-Ipt" id="f48-4K-0sd"/>
+                        <outlet property="playerCard1View" destination="XZq-j2-xQj" id="ZKm-xW-V8Q"/>
+                        <outlet property="playerCard2View" destination="b2K-Fy-A5f" id="lTI-un-Hmc"/>
+                        <outlet property="playerCard3View" destination="nEf-gG-SZW" id="xeG-tO-A0L"/>
                         <outlet property="playerCardInPlayLabel" destination="tsE-jh-2vw" id="Ngz-7y-m7d"/>
                         <outlet property="playerDeckLabel" destination="zNq-3t-OSl" id="ZOY-RJ-grJ"/>
                         <outlet property="playerWarCard1Label" destination="B7d-Jr-jpV" id="HuX-sk-SgQ"/>

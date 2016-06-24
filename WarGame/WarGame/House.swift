@@ -26,6 +26,5 @@ class House: Player
         }
         //later this can become more of a strategy thing
         //if i do decide to keep track of the player's last moves to decide on a strategy, then those need to become properties on the player
-        
     }
 }

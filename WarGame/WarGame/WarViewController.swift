@@ -6,7 +6,6 @@
 //  Copyright © 2016 Amy Joscelyn. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 let card_back = "🐾"
@@ -20,9 +19,12 @@ class WarViewController: UIViewController
     @IBOutlet weak var playerCardInPlayLabel: UILabel!
     @IBOutlet weak var playerDeckLabel: UILabel!
     
-    @IBOutlet weak var playerCard1Label: UILabel!
-    @IBOutlet weak var playerCard2Label: UILabel!
-    @IBOutlet weak var playerCard3Label: UILabel!
+    //    @IBOutlet weak var playerCard1Label: UILabel!
+    //    @IBOutlet weak var playerCard2Label: UILabel!
+    //    @IBOutlet weak var playerCard3Label: UILabel!
+    @IBOutlet weak var playerCard1View: CardView!
+    @IBOutlet weak var playerCard2View: CardView!
+    @IBOutlet weak var playerCard3View: CardView!
     
     @IBOutlet weak var houseWarCard1Label: UILabel!
     @IBOutlet weak var houseWarCard2Label: UILabel!
@@ -50,11 +52,11 @@ class WarViewController: UIViewController
         self.playerDeckLabel.hidden = true
         self.houseCardInPlayLabel.hidden = true
         self.playerCardInPlayLabel.hidden = true
-        self.playerCard1Label.hidden = true
-        self.playerCard2Label.hidden = true
-        self.playerCard3Label.hidden = true
-        
-        self.cardView.card = Card(suit: "N", rank: "0")
+
+        //I still need these...
+        self.playerCard1View.hidden = true
+        self.playerCard2View.hidden = true
+        self.playerCard3View.hidden = true
         
         self.tapGestures()
     }
@@ -65,13 +67,13 @@ class WarViewController: UIViewController
         self.playerDeckLabel.addGestureRecognizer(deckTapGesture)
         
         let card1TapGesture = UITapGestureRecognizer(target: self, action: #selector(WarViewController.card1Tapped))
-        self.playerCard1Label.addGestureRecognizer(card1TapGesture)
+        self.playerCard1View.addGestureRecognizer(card1TapGesture)
         
         let card2TapGesture = UITapGestureRecognizer(target: self, action: #selector(WarViewController.card2Tapped))
-        self.playerCard2Label.addGestureRecognizer(card2TapGesture)
+        self.playerCard2View.addGestureRecognizer(card2TapGesture)
         
         let card3TapGesture = UITapGestureRecognizer(target: self, action: #selector(WarViewController.card3Tapped))
-        self.playerCard3Label.addGestureRecognizer(card3TapGesture)
+        self.playerCard3View.addGestureRecognizer(card3TapGesture)
     }
     
     @IBAction func playContinueButtonTapped(sender: UIButton)
@@ -123,9 +125,9 @@ class WarViewController: UIViewController
         
         self.playContinueButton.enabled = false
         
-        self.playerCard1Label.userInteractionEnabled = true
-        self.playerCard2Label.userInteractionEnabled = true
-        self.playerCard3Label.userInteractionEnabled = true
+        self.playerCard1View.userInteractionEnabled = true
+        self.playerCard2View.userInteractionEnabled = true
+        self.playerCard3View.userInteractionEnabled = true
     }
     
     func deckTapped()
@@ -139,68 +141,46 @@ class WarViewController: UIViewController
         
         if self.dealer.player.cardsInHand.count == 3
         {
-            self.playerCard1Label.text = self.dealer.player.cardsInHand[0].cardLabel
-            self.playerCard2Label.text = self.dealer.player.cardsInHand[1].cardLabel
-            self.playerCard3Label.text = self.dealer.player.cardsInHand[2].cardLabel
+            self.playerCard1View.card = self.dealer.player.cardsInHand[0]
+            self.playerCard2View.card = self.dealer.player.cardsInHand[1]
+            self.playerCard3View.card = self.dealer.player.cardsInHand[2]
             
-            self.playerCard1Label.hidden = false
-            self.playerCard2Label.hidden = false
-            self.playerCard3Label.hidden = false
+            self.dealer.player.cardsInHand.removeAll()
         }
     }
     
     func card1Tapped()
     {
-        //        if let card1Label = self.playerCard1Label.text
-        //        {
-        self.setCardToPlay(self.playerCard1Label)
-        //        }
+        self.determineCardToPlay(self.playerCard1View)
+        self.playerCard1View.card = nil
     }
     
     func card2Tapped()
     {
-        //        if let card2Label = self.playerCard2Label.text
-        //        {
-        self.setCardToPlay(self.playerCard2Label)
-        //        }
+        self.determineCardToPlay(self.playerCard2View)
+        self.playerCard2View.card = nil
     }
     
     func card3Tapped()
     {
-        //would I be able to get all three of these methods combined to one?
-        
-        //        if let card3Label = self.playerCard3Label.text
-        //        {
-        self.setCardToPlay(self.playerCard3Label)
-        //        }
+        self.determineCardToPlay(self.playerCard3View)
+        self.playerCard3View.card = nil
     }
     
-    func setCardToPlay(label: UILabel)
+    func determineCardToPlay(cardView: CardView)
     {
-        print("house deck: \(self.dealer.house.cardsInDeck.count) \n house hand: \(self.dealer.house.cardsInHand.count) \n player deck: \(self.dealer.player.cardsInDeck.count) \n player hand: \(self.dealer.player.cardsInHand.count) \n ________________ \n total: \(self.dealer.house.cardsInDeck.count + self.dealer.house.cardsInHand.count + self.dealer.player.cardsInDeck.count + self.dealer.player.cardsInHand.count)")
+        //now that these implementations are so simple and the cardView carries it's own card, can I push all of the cardViews in hand into the same gesture recognizer?
         
-        for i in 0..<self.dealer.player.cardsInHand.count
+        if let card = cardView.card
         {
-            let card = self.dealer.player.cardsInHand[i]
-            if let cardLabel = label.text
-            {
-                if card.cardLabel == cardLabel
-                {
-                    label.text = ""
-                    label.hidden = true
-                    
-                    self.turn(self.dealer.player.cardsInHand.removeAtIndex(i))
-                    
-                    break
-                }
-            }
+            self.turn(card)
         }
     }
     
     func turn(card: Card)
     {
         self.dealer.player.cardInPlay = card
-        self.playerCardInPlayLabel.text = card.cardLabel
+        self.playerCardInPlayLabel.text = card.cardLabel //make this view, just pass it the card.
         self.playerCardInPlayLabel.hidden = false
         
         self.dealer.cardsInPlay.append(card)
@@ -210,9 +190,12 @@ class WarViewController: UIViewController
         self.houseCardInPlayLabel.text = self.dealer.house.cardInPlay?.cardLabel
         self.houseCardInPlayLabel.hidden = false
         
-        self.playerCard1Label.userInteractionEnabled = false
-        self.playerCard2Label.userInteractionEnabled = false
-        self.playerCard3Label.userInteractionEnabled = false
+        self.playerCard1View.userInteractionEnabled = false
+        self.playerCard2View.userInteractionEnabled = false
+        self.playerCard3View.userInteractionEnabled = false
+        
+        //should I also disable the deck here?  or I can change the logic, so that it's not enabled until the hand/all three cardViews are empty...
+        //the check might be trickier than I think though
         
         self.playContinueButton.enabled = true
         
@@ -223,8 +206,6 @@ class WarViewController: UIViewController
         if self.dealer.house.cardsInHand.count == 0 && self.dealer.player.cardsInHand.count != 0
         {
             self.dealer.round()
-            //You know, it would be kind of cool to see the computer's cardsInHand as well, and to see which it chooses each turn
-            //maybe it can go right at the top, and the winner bar can be translucent over it when it pops up, since those cards aren't interactive anyway
         }
     }
     
@@ -246,7 +227,7 @@ class WarViewController: UIViewController
             self.houseWarCard1Label.text = self.dealer.house.cardsForWar[0].cardLabel
             
             self.houseWarCard1Label.hidden = false
-            //don't forget case 0!!!!
+        //don't forget case 0!!!!
         default:
             self.houseWarCard1Label.text = self.dealer.house.cardsForWar[0].cardLabel
             self.houseWarCard2Label.text = self.dealer.house.cardsForWar[1].cardLabel
@@ -273,4 +254,7 @@ class WarViewController: UIViewController
      
      I should deal with wars, though.  And then worry about winning/finishing the game.
      */
+    
+    //You know, it would be kind of cool to see the computer's cardsInHand as well, and to see which it chooses each turn
+    //maybe it can go right at the top, and the winner bar can be translucent over it when it pops up, since those cards aren't interactive anyway
 }

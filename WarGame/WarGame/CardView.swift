@@ -45,6 +45,7 @@ class CardView: UIView
         {
             if let card = self.card
             {
+                self.hidden = false
                 if (self.faceUp)
                 {
                     self.label.text = card.cardLabel
@@ -57,6 +58,7 @@ class CardView: UIView
             else
             {
                 self.hidden = true
+                //this only works if they're explicitly set as nil
             }
         }
     }
