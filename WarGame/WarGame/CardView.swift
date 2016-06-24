@@ -10,67 +10,75 @@ import UIKit
 
 class CardView: UIView
 {
-    var view: UIView!
+    @IBOutlet private var contentView: UIView?
     @IBOutlet weak var label: UILabel!
     
-    var card: Card? {
-        didSet {
-            if let card = self.card {
-                label.text = card.cardLabel }
-            else {
-                label.text = ""
+    var faceUp: Bool = true
+        {
+        didSet
+        {
+            if self.faceUp
+            {
+                self.label.text = self.card?.cardLabel
+            }
+            else
+            {
+                self.label.text = self.backIcon
             }
         }
     }
-    func loadViewFromNib() -> UIView
-    {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: "CardView", bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
-        
-        return view
+    
+    var backIcon: String = "✪" //card_back //do i need all this duplicate code?
+        {
+        didSet
+        {
+            if !self.faceUp
+            {
+                self.label.text = self.backIcon
+            }
+        }
     }
     
-    func xibSetup()
-    {
-        view = loadViewFromNib()
-        view.frame = bounds
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
-        
-        addSubview(view)
+    var card: Card?
+        {
+        didSet
+        {
+            if let card = self.card
+            {
+                if (self.faceUp)
+                {
+                    self.label.text = card.cardLabel
+                }
+                else
+                {
+                    self.label.text = self.backIcon
+                }
+            }
+            else
+            {
+                self.hidden = true
+            }
+        }
     }
     
     override init(frame: CGRect)
     {
         super.init(frame: frame)
-        
-        xibSetup()
+        self.commonInit()
     }
     
-    required init(coder aDecoder: NSCoder)
+    required init?(coder aDecoder: NSCoder)
     {
-        super.init(coder: aDecoder)! //this is causing an infinite loop
-        
-        if let v = self.view
-        {
-            if v.subviews.count == 0
-            {
-                xibSetup()
-            }
-        }
-        
+        super.init(coder: aDecoder)
+        self.commonInit()
     }
     
-//    -(id)initWithCoder:(NSCoder *)aDecoder {
-//    self = [super initWithCoder:aDecoder];
-//    if (self) {
-//    if (self.subviews.count == 0) {
-//    UINib *nib = [UINib nibWithNibName:NSStringFromClass([self class]) bundle:nil];
-//    UIView *subview = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
-//    subview.frame = self.bounds;
-//    [self addSubview:subview];
-//    }
-//    }
-//    return self;
-//    }
+    private func commonInit()
+    {
+        let content = NSBundle.mainBundle().loadNibNamed("CardView", owner: self, options: nil).first as! UIView
+        content.frame = self.bounds
+        content.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        self.contentView = content
+        self.addSubview(content)
+    }
 }

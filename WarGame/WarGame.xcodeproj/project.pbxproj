@@ -113,8 +113,8 @@
 			children = (
 				3D71A3971D19C0D300E158D0 /* AppDelegate.swift */,
 				3D71A3CF1D19D37C00E158D0 /* WarViewController.swift */,
-				3D947F241D1C32C1009801AE /* CardView.swift */,
 				3D71A39B1D19C0D300E158D0 /* Main.storyboard */,
+				3D947F241D1C32C1009801AE /* CardView.swift */,
 				3D947F281D1C3A71009801AE /* CardView.xib */,
 				3D71A3C51D19C0EB00E158D0 /* Card.swift */,
 				3D71A3C71D19C15700E158D0 /* Deck.swift */,

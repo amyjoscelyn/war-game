@@ -54,7 +54,7 @@ class WarViewController: UIViewController
         self.playerCard2Label.hidden = true
         self.playerCard3Label.hidden = true
         
-//        self.view.addSubview(cardViewXib)
+        self.cardView.card = Card(suit: "N", rank: "0")
         
         self.tapGestures()
     }
