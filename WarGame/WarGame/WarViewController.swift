@@ -326,4 +326,8 @@ class WarViewController: UIViewController
     
     //You know, it would be kind of cool to see the computer's cardsInHand as well, and to see which it chooses each turn
     //maybe it can go right at the top, and the winner bar can be translucent over it when it pops up, since those cards aren't interactive anyway
+    
+    //deck interactivity must be disabled
+    
+    //do pan gestures, even though they're scary
 }
